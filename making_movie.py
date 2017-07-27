@@ -15,7 +15,7 @@ from astropy.stats import mad_std
 from yt.units import K
 from subprocess import call
 
-
+# Or you can put all the file names in here in the list to run it all at one time. Might take really long though...
 list=['NGC6478.co.xycut.K.fits','NGC7738.co.xycut.K.fits', 'NGC7819.co.xycut.K.fits']
 
 rotate_angle_per_time=9 # in degrees
@@ -50,7 +50,7 @@ def makemovie(name):
 
     max=max1/K
 
-    sig=mad_std(data, ignore_nan=True)
+    sig=mad_std(data, ignore_nan=True) # Older astropy version does not support ignore_nan argument. Delete it and the code will run.
 
 
     tf2 = yt.ColorTransferFunction((sig, max))
